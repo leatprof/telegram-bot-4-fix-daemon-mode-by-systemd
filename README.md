@@ -1,10 +1,11 @@
 # telegram-bot-4-fix-daemon-mode-by-systemd
 
-Развертываем через ansible:
+Развертываем через ansible, все команды в папке ansible:
 
 1) Создаем переменные и заполняем данные на основе config.ini.sample:
 
 ansible-vault create group_vars/all/vault.yml
+Создаем пароль и далее указываем что создаем файл .vault_pass в котором записываем этот пароль.
 
 2) Развертываем:
 
