@@ -1,0 +1,29 @@
+---
+
+- name: install python3 package
+  apt: pkg={{ item }}
+  with_items:
+    - python3
+
+- name: clone git repo to /opt/telegram-bot
+  git:
+    repo: 'https://github.com/leatprof/telegram-bot-4-fix-daemon-mode-by-systemd.git'
+    dest: /opt/telegram-bot
+
+- name: create config.ini
+  template:
+    src: templates/config.ini.j2
+    dest: /opt/telegram-bot/config.ini
+    mode: "0644"
+
+- name: copy systemd init scripts
+  copy: src=etc/systemd dest=/etc/
+  notify:
+    - systemd daemon-reload
+
+- name: enable telegram-bot.service
+  shell: systemctl enable telegram-bot.service
+
+- name: start telegram-bot.service
+  shell: systemctl start telegram-bot.service
+

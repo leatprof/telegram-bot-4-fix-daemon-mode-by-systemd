@@ -1,0 +1,4 @@
+[all:children]
+bot
+[bot]
+bot ansible_ssh_host=178.62.255.222

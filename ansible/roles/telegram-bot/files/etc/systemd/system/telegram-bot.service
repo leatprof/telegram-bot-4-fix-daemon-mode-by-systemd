@@ -1,0 +1,17 @@
+[Unit]
+Description=telegram-bot
+Requires=network.target
+ 
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/telegram-bot
+ExecStart=/bin/bash -lxc 'python3 main.py'
+TimeoutSec=10
+RestartSec=5s
+Restart=always
+PIDFile=/run/telegram-bot.pid
+
+[Install]
+WantedBy=default.target

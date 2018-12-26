@@ -1,0 +1,5 @@
+---
+- name: install telegram-bot on servers
+  hosts: bot
+  roles:
+    - role: telegram-bot

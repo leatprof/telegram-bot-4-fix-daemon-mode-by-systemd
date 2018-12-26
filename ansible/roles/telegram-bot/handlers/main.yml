@@ -1,0 +1,6 @@
+---
+# Handler
+
+- name: systemd daemon-reload
+  shell: systemctl daemon-reload
+
